@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+  <title>Ambassador's Duty Sign-Up</title>
+
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 40px;
+    background-color: #f9f9f9;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+
+  .link-box {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .link-box a {
+    font-size: 16px;
+    color: #2f4e98;
+    text-decoration: underline;
+    margin-bottom: 40px;
+  }
+
+  table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    table-layout: fixed; /* Ensures consistent widths */
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 20px 12px;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  th {
+    background-color: #2f4e98;
+    color: white;
+  }
+
+  #eventTable tbody tr:nth-child(odd) {
+    background-color: #ffffff !important;
+  }
+
+  #eventTable tbody tr:nth-child(even) {
+    background-color: #f2f2f2 !important;
+  }
+
+  .signup-btn {
+    padding: 4px 10px;
+    font-size: 16px;
+    background-color: #2f4e98;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .signup-btn:hover {
+    background-color: #1d3470;
+  }
+
+  thead th:nth-child(1) { width: 25%; } /* Event Name */
+  thead th:nth-child(2) { width: 9%; } /* Day */
+  thead th:nth-child(3) { width: 9%; } /* Date */
+  thead th:nth-child(4) { width: 15%; } /* Time */
+  thead th:nth-child(5) { width: 14%; } /* Needed */
+  thead th:nth-child(6) { width: 10%; } /* Action */
+
+  .dataTables_wrapper {
+    width: 95%;
+    margin: 0 auto 30px auto; /* center + bottom spacing */
+  }
+
+  .dataTables_length, .dataTables_filter {
+    margin-bottom: 16px;
+  }
+
+  .dataTables_length {
+    float: left;
+  }
+
+  .dataTables_filter {
+    float: right;
+  }
+
+  .dataTables_paginate .paginate_button {
+    font-size: 14px !important;
+    padding: 4px 8px !important;
+    margin: 0 2px;
+    border-radius: 4px;
+  }
+
+  @media only screen and (max-width: 600px) and (orientation: portrait) {
+    body {
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+    }
+
+    .link-box a {
+      display: block;
+      word-break: break-word;
+      font-size: 14px;
+    }
+
+    table {
+      font-size: 12px;
+    }
+
+    th, td {
+      padding: 8px;
+    }
+
+    .signup-btn {
+      padding: 4px 10px;
+      font-size: 11px;
+      border-radius: 3px;
+    }
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+
+    thead {
+      display: none;
+    }
+
+    tr {
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: #fff;
+    }
+
+    td {
+      text-align: left;
+      padding-left: 50%;
+      position: relative;
+    }
+
+    td::before {
+      position: absolute;
+      top: 12px;
+      left: 10px;
+      width: 45%;
+      white-space: nowrap;
+      font-weight: bold;
+      color: #2f4e98;
+    }
+
+    td:nth-of-type(1)::before { content: "Event Name"; }
+    td:nth-of-type(2)::before { content: "Event Day"; }
+    td:nth-of-type(3)::before { content: "Event Date"; }
+    td:nth-of-type(4)::before { content: "Time"; }
+    td:nth-of-type(5)::before { content: "Ambassadors Needed"; }
+    td:nth-of-type(6)::before { content: "Action"; }
+  }
+  </style>
+</head>
+<body>
+
+  <h1>Ambassador's Duty Sign-Up</h1>
+
+  <div class="link-box">
+    For any issues and/or concerns, please contact the Operations Team through Telegram or Email. 📌
+    <a href="mailto:ambsoperationsdept@gmail.com">
+      ambsoperationsdept@gmail.com
+    </a>
+  </div>
+
+  <table id="eventTable">
+    <thead>
+      <tr>
+        <th onclick="sortTable(0)">Event Name</th>
+        <th onclick="sortTable(1)">Event Day</th>
+        <th onclick="sortTable(2)">Event Date</th>
+        <th onclick="sortTable(3)">Time</th>
+        <th onclick="sortTable(4)">Ambassadors Needed</th>
+        <th onclick="sortTable(5)">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Booth in Compassvale Sec Sch (1)</td>
+        <td>Wed</td>
+        <td>27/08/25</td>
+        <td>11.00am to 1.15pm</td>
+        <td>2</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in Compassvale Sec Sch (2)</td>
+        <td>Wed</td>
+        <td>27/08/25</td>
+        <td>1.15 to 2.30pm</td>
+        <td>6</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in Singapore Chinese Girls Sch</td>
+        <td>Wed</td>
+        <td>06/08/25</td>
+        <td>7.50 to 8.50am</td>
+        <td>4</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in Bendemeer Sec Sch</td>
+        <td>Tue</td>
+        <td>03/09/25</td>
+        <td>9.00am to 10.30am</td>
+        <td>3</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in CHIJ St. Nicholas Girls' School</td>
+        <td>Thu</td>
+        <td>05/09/25</td>
+        <td>12.00pm to 1.30pm</td>
+        <td>5</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Open House</td>
+        <td>Fri</td>
+        <td>06/09/25</td>
+        <td>10.00am to 12.00pm</td>
+        <td>4</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in Dunman High School</td>
+        <td>Mon</td>
+        <td>09/09/25</td>
+        <td>9.00am to 11.00am</td>
+        <td>3</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in River Valley High School</td>
+        <td>Tue</td>
+        <td>10/09/25</td>
+        <td>2.00pm to 4.00pm</td>
+        <td>2</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in Anglo-Chinese School (Barker)</td>
+        <td>Wed</td>
+        <td>11/09/25</td>
+        <td>8.30am to 10.00am</td>
+        <td>5</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in Catholic High School</td>
+        <td>Thu</td>
+        <td>12/09/25</td>
+        <td>11.00am to 12.30pm</td>
+        <td>3</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in Tanjong Katong Girls' School</td>
+        <td>Fri</td>
+        <td>13/09/25</td>
+        <td>1.00pm to 2.00pm</td>
+        <td>6</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in Nan Hua High School</td>
+        <td>Mon</td>
+        <td>16/09/25</td>
+        <td>10.00am to 11.30am</td>
+        <td>2</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in St. Margaret's Secondary School</td>
+        <td>Tue</td>
+        <td>17/09/25</td>
+        <td>9.00am to 10.00am</td>
+        <td>3</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in Raffles Institution</td>
+        <td>Wed</td>
+        <td>18/09/25</td>
+        <td>12.00pm to 1.00pm</td>
+        <td>5</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in Bukit View Secondary School</td>
+        <td>Thu</td>
+        <td>19/09/25</td>
+        <td>10.30am to 12.00pm</td>
+        <td>4</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in CHIJ Katong Convent</td>
+        <td>Fri</td>
+        <td>20/09/25</td>
+        <td>2.00pm to 3.30pm</td>
+        <td>2</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in Cedar Girls' Secondary School</td>
+        <td>Mon</td>
+        <td>23/09/25</td>
+        <td>9.30am to 11.00am</td>
+        <td>3</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in Peirce Secondary School</td>
+        <td>Tue</td>
+        <td>24/09/25</td>
+        <td>11.00am to 12.30pm</td>
+        <td>4</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in Temasek Secondary School</td>
+        <td>Wed</td>
+        <td>25/09/25</td>
+        <td>10.00am to 11.15am</td>
+        <td>2</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in Paya Lebar Methodist Girls' School</td>
+        <td>Thu</td>
+        <td>26/09/25</td>
+        <td>1.30pm to 3.00pm</td>
+        <td>6</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+      <tr>
+        <td>Booth in Yishun Town Secondary School</td>
+        <td>Fri</td>
+        <td>27/09/25</td>
+        <td>8.00am to 9.30am</td>
+        <td>3</td>
+        <td><a class="signup-btn" href="https://www.np.edu.sg/" target="_blank">Sign Up</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+  function filterTable() {
+    const input = document.getElementById("searchInput").value.toUpperCase();
+    const table = document.querySelector("table");
+    const rows = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+      const firstCell = rows[i].getElementsByTagName("td")[0];
+      if (firstCell) {
+        const text = firstCell.textContent || firstCell.innerText;
+        rows[i].style.display = text.toUpperCase().indexOf(input) > -1 ? "" : "none";
+      }
+    }
+  }
+
+  function sortTable(colIndex) {
+    const table = document.querySelector("table");
+    let switching = true;
+    let dir = "asc";
+    let switchCount = 0;
+
+    while (switching) {
+      switching = false;
+      const rows = table.rows;
+
+      for (let i = 1; i < rows.length - 1; i++) {
+        let shouldSwitch = false;
+        const x = rows[i].getElementsByTagName("td")[colIndex];
+        const y = rows[i + 1].getElementsByTagName("td")[colIndex];
+
+        if (!x || !y) continue;
+
+        const xContent = x.innerText.toLowerCase();
+        const yContent = y.innerText.toLowerCase();
+
+        if ((dir === "asc" && xContent > yContent) || (dir === "desc" && xContent < yContent)) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+
+      if (shouldSwitch) {
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        switchCount++;
+      } else {
+        if (switchCount === 0 && dir === "asc") {
+          dir = "desc";
+          switching = true;
+        }
+      }
+    }
+  }
+
+  $(document).ready(function () {
+    $('#eventTable').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true
+    });
+  });
+  </script>
+
+</body>
+</html>
